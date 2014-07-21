@@ -1,0 +1,9 @@
+.yo-rc.json
+node_modules/
+app/bower_components/
+example/bower_components/
+.tmp
+*.swp
+*.swo
+.DS_Store
+

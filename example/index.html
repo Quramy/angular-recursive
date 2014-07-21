@@ -1,0 +1,40 @@
+<!doctype html>
+<html ng-app="myApp">
+
+<head>
+    <title>Demo</title>
+</head>
+
+<body ng-controller="Ctrl">
+	data dump:
+
+	<span>{{treeData}}</span>
+
+	<div q-recurse="treeData">
+		<h3>{{treeData.name}} in {{title}}</h3>
+		<ul>
+			<li ng-repeat="childNode in treeData.children" q-recurse-node="childNode"></li>
+		</ul>
+	</div>
+
+	<div q-recurse="treeData">
+		<span>{{treeData.name}}</span> -&gt;
+		<div style="margin-left: 20px;"  q-recurse-node="treeData.children[0]"></div>
+	</div>
+
+	<div q-recurse="someData.myTree" q-recurse-var="treeData2">
+		<h3>{{treeData2.name}} in {{title}}</h3>
+		<input ng-model="treeData2.newName" type="text" />
+		<button ng-click="addChild(treeData2);">+</button>
+		<ul>
+			<li ng-repeat="childNode in treeData2.children" q-recurse-node="childNode"></li>
+		</ul>
+	</div>
+
+	<script src="js/angular.min.js"></script>
+	<script src="js/angular-recursive.js"></script>
+	<script src="js/main.js"></script>
+
+</body>
+
+</html>

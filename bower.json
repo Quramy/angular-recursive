@@ -1,0 +1,39 @@
+{
+  "name": "angular-recursive",
+  "version": "0.0.1",
+  "title": "Angular recursive",
+  "description": "",
+  "keywords": [
+    "image",
+    "video",
+    "gallery"
+  ],
+  "homepage": "",
+  "author": {
+    "name": "Quramy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://.git"
+  },
+  "bugs": "/issues",
+  "dependencies": {
+    "angular": "~1.2.20"
+  },
+  "main": [
+		"js/angular-recursive.js"
+  ],
+  "ignore": [
+    "/*.*",
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ],
+  "authors": [
+    "Quramy <yosule.kurami@gmail.com>"
+  ],
+  "license": "MIT"
+}
