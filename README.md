@@ -4,7 +4,7 @@ This is [AngularJS](https://angularjs.org/) directive for tree strucuture datum 
 
 ## How to install
 
-Download angular-recursive.js file from [here](master/js/angular-recursive.js), or use [bower](http://bower.io/).
+Download angular-recursive.js file from [here](blob/master/js/angular-recursive.js), or use [bower](http://bower.io/).
 
 ```bash
 $ bower install angular-recursive
@@ -13,8 +13,10 @@ $ bower install angular-recursive
 And load script into your html.
 
 ```html
+...
 <script src="bower_components/angular/angular.min.js"></script>
 <script src="bower_components/angular-recursive/js/angular-recursive.js"></script>
+...
 ```
 
 ## Usage
