@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://Quramy/angular-recursive"
+    "url": "git://github.com/Quramy/angular-recursive"
   },
   "bugs": "/issues",
   "dependencies": {
