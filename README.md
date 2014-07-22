@@ -4,7 +4,7 @@ This is [AngularJS](https://angularjs.org/) directive for tree strucuture datum 
 
 ## How to install
 
-Download angular-recursive.js file from [here](blob/master/js/angular-recursive.js), or use [bower](http://bower.io/).
+Download angular-recursive.js file from [here](https://github.com/Quramy/angular-recursive/blob/master/js/angular-recursive.js), or use [bower](http://bower.io/).
 
 ```bash
 $ bower install angular-recursive
@@ -109,12 +109,12 @@ $scope.someData = {
 
 You can access recursion level in yout html using `scope.$depth` (e.g. `$index` in `ng-repeat`). 
 
-The following example limits recursion level to `3`.
+The following example limits the number of recursive expansion to 3 times.
 
 ```html
 <div q-recurse="linkData">
 	Recursion level: {{$depth}}
-	<div ng-if="$depth <= 2" q-recurse-node="linkData.next"></div>
+	<div ng-if="$depth < 3" q-recurse-node="linkData.next"></div>
 </div>
 ```
 
