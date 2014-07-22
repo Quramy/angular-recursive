@@ -32,8 +32,7 @@ myApp.controller('Ctrl', ['$scope', function($scope){
 		name: 'root',
 		children: [
 			{ name: 'usr', children:[{ name: 'lib' }, {name: 'bin'}] },
-			{ name: 'var' },
-			{ name: 'home' }
+			{ name: 'var' }
 		]
 	};
 });
@@ -42,14 +41,23 @@ myApp.controller('Ctrl', ['$scope', function($scope){
 Markup `q-recurse` and `q-recurse-node` into your view.
 
 ```html
-	<div ng-controller="Ctrl">
-		<div q-recurse="treeData">
-			<ul>
-				<li ng-repeat="childNode in treeData.children" q-recurse-node="childNode"></li>
-			</ul>
-		</div>
+<div ng-controller="Ctrl">
+	<div q-recurse="treeData">
+		<span>{{treeData.name}}</span>
+		<ul>
+			<li ng-repeat="childNode in treeData.children" q-recurse-node="childNode"></li>
+		</ul>
 	</div>
+</div>
 ```
+
+Run your app, so you can get following html:
+
+ * root
+  * usr
+   * lib
+   * bin
+  * var
 
 ## reference
 
