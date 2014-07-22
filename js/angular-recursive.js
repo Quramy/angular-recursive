@@ -6,7 +6,7 @@
 	angular.module('quramy-recursive', []).directive(recurseDirective, ['$parse', function($parse){
 		return{
 			transclude: true,
-			restrict: 'EAC',
+			restrict: 'AC',
 			template: '<div ng-transclude></div>',
 			controller: ['$scope', '$attrs', '$transclude', function($scope, $attrs, $transclude){
 				var data;
@@ -40,7 +40,7 @@
 			}
 		};
 		return {
-			restrict: 'EAC',
+			restrict: 'AC',
 			require: '^' + recurseDirective,
 			link: {
 				post: function(scope, element, attrs, ctrl){

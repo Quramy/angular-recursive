@@ -6,7 +6,7 @@ This is [AngularJS](https://angularjs.org/) directive for tree strucuture datum 
 
 Download angular-recursive.min.js file from here, or use bower.
 
-```
+```bash
 $ bower install angular-recursive
 ```
 
@@ -53,11 +53,64 @@ Markup `q-recurse` and `q-recurse-node` into your view.
 
 Run your app, so you can get following html:
 
- * root
-  * usr
-   * lib
-   * bin
-  * var
+----
+
+root
+ + usr
+  + lib
+  + bin
+ + var
+
+----
 
 ## reference
+
++ `q-recurse`
+
+This directive stands for starting recursion. 
+Set "root" of your tree data to this attribute.
+
++ `q-recurse-node`
+
+This directive stands for ending recursion. 
+Set "next node" of your tree data to this attribute.
+Elements marked up this attribute must have a parent element marked up `q-recurse` attribute, and 
+
++ `q-recurse-var`
+
+Set an alias recursive structure data.
+
+```html
+<div q-recurse="someData.linkList" q-recurse-var="myLink">
+	<span>{{myTree.name}}</span>
+  <div q-recurse-node="myLink.next"></div>
+</div>
+```
+
+```js
+$scope.someData = {
+	linkList:{
+		name: 'first',
+		next: {
+			name: 'second',
+			next: {
+				name: 'last'
+			}
+		}
+	}
+};
+```
+
++ `$depth`
+
+You can access recursion level in yout html using `scope.$depth`(e.g. `$index` in `ng-repeat`). 
+
+The following example limits recursion level to `3`.
+
+```html
+<div q-recurse="treeData">
+	Recursion level: {{$depth}}
+	<div ng-if="$depth <= 2" q-recurse-node="treeData.nextNode"></div>
+</div>
+```
 
