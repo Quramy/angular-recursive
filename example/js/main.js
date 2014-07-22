@@ -11,9 +11,13 @@ angular.module('myApp', ['quramy-recursive']).controller('Ctrl', ['$scope', func
 	};
 
 	$scope.addChild = function(data){
+		if(!data.children){
+			data.children = [];
+		}
 		data.children.push({
 			name: data.newName
 		});
+		data.newName = '';
 	};
 
 	$scope.removeChild = function(data, i){

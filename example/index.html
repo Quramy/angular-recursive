@@ -6,12 +6,15 @@
 </head>
 
 <body ng-controller="Ctrl">
+
+	<h1>Angular Recursive Directive Example</h1>
+
 	data dump: <span>{{treeData}}</span>
 
 	<div>
 		<h2>Simple Pattern</h2>
 		<div q-recurse="treeData">
-			<h3>{{treeData.name}} in {{title}}</h3>
+			<span>{{treeData.name}}</span>
 			<ul>
 				<li ng-repeat="childNode in treeData.children" q-recurse-node="childNode"></li>
 			</ul>
@@ -23,17 +26,24 @@
 		<div style="margin-left: 20px;"  q-recurse-node="treeData.children[0]"></div>
 	</div>
 
-	<div q-recurse="someData.myTree" q-recurse-var="treeData2">
-		<h3>{{treeData2.name}} in {{title}}</h3>
-		{{$depth}}
-		<input ng-model="treeData2.newName" type="text" />
-		<button ng-click="addChild(treeData2);">+</button>
-		<ul>
-			<li ng-repeat="childNode in treeData2.children" >
-			<button ng-click="removeChild(treeData2, $index);">x</button>
-			<div q-recurse-node="childNode"></div>
-			</li>
-		</ul>
+	<div>
+		<h2>Full Feature</h2>
+		<div q-recurse="someData.myTree" q-recurse-var="treeVar">
+			<div style="border-style:dotted; border-width:1px; border-color:#bbb;">
+				Name: {{treeVar.name}} (Level: {{$depth}}-{{$parent.$index}})
+				<button ng-if="$depth > 0" ng-click="removeChild($parent.treeData, $parent.$index);">-</button>
+				<ul ng-if="$depth < 3">
+					<li ng-repeat="childNode in treeVar.children">
+					<div q-recurse-node="childNode"></div>
+					</li>
+					<li>
+					<input ng-model="treeVar.newName" type="text" placeholder="new child node name"/>
+					<button ng-click="addChild(treeVar);">+</button>
+					</li>
+				</ul>
+				<div ng-if="$depth >=3">(You can't create a new node whose level is g.t. 3.)</div>
+			</div>
+		</div>
 	</div>
 
 	<div>

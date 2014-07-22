@@ -1,7 +1,7 @@
 'use.strict';
 
 (function(){
-	var recurseDirective = 'qRecurse', recurseNodeDirective = 'qRecurseNode';
+	var recurseDirective = 'qRecurse', recurseNodeDirective = 'qRecurseNode', recurseTakeover = recurseDirective + 'Takeover';
 
 	angular.module('quramy-recursive', []).directive(recurseDirective, ['$parse', function($parse){
 		return{
@@ -29,6 +29,16 @@
 			}
 		};
 	}]).directive(recurseNodeDirective, ['$parse', function($parse){
+		var scopeTransfer = function(destScope, transVars){
+			var i = 0;
+			if(angular.isObject(transVars)){
+				angular.forEach(transVars, function(value, key){
+					destScope[key] = value;
+				});
+			}else{
+				return;
+			}
+		};
 		return {
 			restrict: 'EAC',
 			require: '^' + recurseDirective,
@@ -36,10 +46,16 @@
 				post: function(scope, element, attrs, ctrl){
 					if(ctrl && attrs[recurseNodeDirective]){
 						var childName = ctrl.recurseName;
-						var childScope = scope.$new(false);
+						var childScope;
 						var child = $parse(attrs[recurseNodeDirective])(scope);
+						var transStr = attrs[recurseTakeover], transVars;
 						if(child){
+							childScope = scope.$new(false);
 							childScope.$depth = scope.$depth + 1;
+							if(transStr){
+								transVars = $parse(transStr)(scope);
+								scopeTransfer(childScope, transVars);
+							}
 							$parse(childName).assign(childScope, child);
 							ctrl.linkFn(childScope, function(clonedElement){
 								element.append(clonedElement);
