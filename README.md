@@ -4,7 +4,7 @@ This is [AngularJS](https://angularjs.org/) directive for tree strucuture datum 
 
 ## How to install
 
-Download angular-recursive.min.js file from here, or use bower.
+Download angular-recursive.js file from [here](master/js/angular-recursive.js), or use [bower](http://bower.io/).
 
 ```bash
 $ bower install angular-recursive
@@ -13,6 +13,7 @@ $ bower install angular-recursive
 And load script into your html.
 
 ```html
+<script src="bower_components/angular/angular.min.js"></script>
 <script src="bower_components/angular-recursive/js/angular-recursive.js"></script>
 ```
 
@@ -24,7 +25,7 @@ Load `quramy-recursive` module into your app.
 var myApp = angular.module('myApp', ['quramy-recursive']);
 ```
 
-Setup recursive structure data on `scope`.
+Setup recursive structure data on your `scope`.
 
 ```js
 myApp.controller('Ctrl', ['$scope', function($scope){
@@ -38,7 +39,7 @@ myApp.controller('Ctrl', ['$scope', function($scope){
 });
 ```
 
-Markup `q-recurse` and `q-recurse-node` into your view.
+Markup `q-recurse` and `q-recurse-node` on elements to recurse in your view.
 
 ```html
 <div ng-controller="Ctrl">
@@ -73,8 +74,8 @@ Set "root" of your tree data to this attribute.
 + `q-recurse-node`
 
 This directive stands for ending recursion. 
-Set "next node" of your tree data to this attribute.
-The element marked up this attribute must have a parent element marked up `q-recurse` attribute.  
+Set "next node" of your tree data to this attribute.  
+The element marked up this attribute must have a parent element marked up `q-recurse` attribute.
 It expands elements contained in the element maked up `q-recurse` into itself until "next node" data is `null` or `undefined`.
 
 + `q-recurse-var`
@@ -109,9 +110,9 @@ You can access recursion level in yout html using `scope.$depth` (e.g. `$index` 
 The following example limits recursion level to `3`.
 
 ```html
-<div q-recurse="treeData">
+<div q-recurse="linkData">
 	Recursion level: {{$depth}}
-	<div ng-if="$depth <= 2" q-recurse-node="treeData.nextNode"></div>
+	<div ng-if="$depth <= 2" q-recurse-node="linkData.next"></div>
 </div>
 ```
 
