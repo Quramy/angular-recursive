@@ -6,15 +6,16 @@
 </head>
 
 <body ng-controller="Ctrl">
-	data dump:
+	data dump: <span>{{treeData}}</span>
 
-	<span>{{treeData}}</span>
-
-	<div q-recurse="treeData">
-		<h3>{{treeData.name}} in {{title}}</h3>
-		<ul>
-			<li ng-repeat="childNode in treeData.children" q-recurse-node="childNode"></li>
-		</ul>
+	<div>
+		<h2>Simple Pattern</h2>
+		<div q-recurse="treeData">
+			<h3>{{treeData.name}} in {{title}}</h3>
+			<ul>
+				<li ng-repeat="childNode in treeData.children" q-recurse-node="childNode"></li>
+			</ul>
+		</div>
 	</div>
 
 	<div q-recurse="treeData">
@@ -24,11 +25,23 @@
 
 	<div q-recurse="someData.myTree" q-recurse-var="treeData2">
 		<h3>{{treeData2.name}} in {{title}}</h3>
+		{{$depth}}
 		<input ng-model="treeData2.newName" type="text" />
 		<button ng-click="addChild(treeData2);">+</button>
 		<ul>
-			<li ng-repeat="childNode in treeData2.children" q-recurse-node="childNode"></li>
+			<li ng-repeat="childNode in treeData2.children" >
+			<button ng-click="removeChild(treeData2, $index);">x</button>
+			<div q-recurse-node="childNode"></div>
+			</li>
 		</ul>
+	</div>
+
+	<div>
+		<h2>Error Pattern</h2>
+		<div q-recurse="treeData">
+			{{treeData.name}}
+			<div q-recurse-node></div>
+		</div>
 	</div>
 
 	<script src="js/angular.min.js"></script>

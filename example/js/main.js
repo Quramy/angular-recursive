@@ -4,7 +4,7 @@ angular.module('myApp', ['quramy-recursive']).controller('Ctrl', ['$scope', func
 	var treeData = {
 		name: 'root',
 		children: [
-			{ name: 'usr', children:[{ name: 'lib' }] },
+			{ name: 'usr', children:[{ name: 'lib' }, {name: 'bin'}] },
 			{ name: 'var' },
 			{ name: 'home' }
 		]
@@ -14,6 +14,10 @@ angular.module('myApp', ['quramy-recursive']).controller('Ctrl', ['$scope', func
 		data.children.push({
 			name: data.newName
 		});
+	};
+
+	$scope.removeChild = function(data, i){
+		data.children.splice(i, 1);
 	};
 
 	$scope.title = 'my tree data';
