@@ -1,4 +1,4 @@
-'use.strict';
+'use strict';
 
 (function(){
 	var recurseDirective = 'qRecurse', recurseNodeDirective = 'qRecurseNode', recurseTakeover = recurseDirective + 'Takeover';
@@ -12,19 +12,24 @@
 				var data;
 				this.linkFn = $transclude;
 				this.recurseName = $attrs.qRecurse;
+
+				// Set alias
 				if($attrs.qRecurse && $attrs.qRecurseVar){
 					this.recurseName = $attrs.qRecurseVar;
 					data = $parse($attrs.qRecurse)($scope);
 					$scope[$attrs.qRecurseVar] = $scope[$attrs.qRecurseVar] || data;
 				}
+
 			}],
 			link: {
 				pre: function(scope, element, attrs){
 					scope.$depth = 0;
+					/*
 					if(attrs.qRecurse && attrs.qRecurseVar){
 						var data = $parse(attrs.qRecurse)(scope);
 						scope[attrs.qRecurseVar] = data;
 					}
+				  */
 				}
 			}
 		};
@@ -57,6 +62,8 @@
 								scopeTransfer(childScope, transVars);
 							}
 							$parse(childName).assign(childScope, child);
+
+							// linking parent template and child scope.
 							ctrl.linkFn(childScope, function(clonedElement){
 								element.append(clonedElement);
 							});
