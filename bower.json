@@ -1,12 +1,12 @@
 {
   "name": "angular-recursive",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "title": "Angular recursive",
-  "description": "",
+  "description": "AngularJS directive for recursive data.",
   "keywords": [
-    "image",
-    "video",
-    "gallery"
+    "angularjs",
+    "directive",
+    "recurse"
   ],
   "homepage": "",
   "author": {
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://.git"
+    "url": "git://Quramy/angular-recursive"
   },
   "bugs": "/issues",
   "dependencies": {
@@ -26,9 +26,11 @@
   "ignore": [
     "/*.*",
     "**/.*",
+		"Gruntfile.js",
+		"package.json",
     "node_modules",
     "bower_components",
-    "app/bower_components",
+    "example/bower_components",
     "test",
     "tests"
   ],
