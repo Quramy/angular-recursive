@@ -31,7 +31,7 @@
 		<div q-recurse="someData.myTree" q-recurse-var="treeVar">
 			<div style="border-style:dotted; border-width:1px; border-color:#bbb;">
 				Name: {{treeVar.name}} (Level: {{$depth}}-{{$parent.$index}})
-				<button ng-if="$depth > 0" ng-click="removeChild($parent.treeData, $parent.$index);">-</button>
+				<button ng-if="$depth > 0" ng-click="removeChild($parent.$parent.treeVar, $parent.$index);">-</button>
 				<ul ng-if="$depth < 3">
 					<li ng-repeat="childNode in treeVar.children">
 					<div q-recurse-node="childNode"></div>
