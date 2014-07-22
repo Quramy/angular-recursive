@@ -63,7 +63,7 @@ root
 
 ----
 
-## reference
+## Reference
 
 + `q-recurse`
 
@@ -74,7 +74,8 @@ Set "root" of your tree data to this attribute.
 
 This directive stands for ending recursion. 
 Set "next node" of your tree data to this attribute.
-Elements marked up this attribute must have a parent element marked up `q-recurse` attribute, and 
+The element marked up this attribute must have a parent element marked up `q-recurse` attribute.  
+It expands elements contained in the element maked up `q-recurse` into itself until "next node" data is `null` or `undefined`.
 
 + `q-recurse-var`
 
@@ -103,7 +104,7 @@ $scope.someData = {
 
 + `$depth`
 
-You can access recursion level in yout html using `scope.$depth`(e.g. `$index` in `ng-repeat`). 
+You can access recursion level in yout html using `scope.$depth` (e.g. `$index` in `ng-repeat`). 
 
 The following example limits recursion level to `3`.
 
