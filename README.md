@@ -1,5 +1,7 @@
 # Andular Recursive
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/Quramy/angular-recursive.svg)](https://greenkeeper.io/)
+
 This is [AngularJS](https://angularjs.org/) directive for tree strucuture datum recursively.
 
 ## How to install
